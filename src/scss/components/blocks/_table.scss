@@ -1,0 +1,66 @@
+@use '../../utils/vars' as *;
+@use '../../utils/mixins' as *;
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: $table-bg ;
+  padding: 24px 16px;
+
+  &__wrapper {
+    overflow: hidden;
+    border: 1px solid $table-border;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+  }
+
+  &__title {
+    color: $white;
+    font-size: 26px;
+    font-weight: 700;
+    text-align: left;
+    background-color: $table-head;
+    border-bottom: 1px solid $table-border;
+    padding: 20px 20px 18px;
+  }
+
+  & th,
+  & td {
+    border-bottom: 1px solid $table-border;
+    padding: 16px 10px;
+    text-align: left;
+    color: inherit;
+  }
+
+  thead {
+    background-color: $table-head;
+  }
+
+  tr:hover {
+    background-color: $table-head;
+  }
+
+
+  @media screen and (max-width: 768px) {
+    & thead {
+      display: none;
+    }
+
+    & tr {
+      display: block;
+      border: 2px dashed #790606;
+    }
+
+    & td {
+      display: block;
+      text-align: right;
+    }
+
+    & td:before {
+      content: attr(data-label);
+      float: left;
+      font-weight: bold;
+      margin-right: 5px;
+    }
+  }
+}

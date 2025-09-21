@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="uk">
+@include('html/blocks/head.html', {"title": "Грим та Грім — український рок гурт | Офіційний сайт"})
+
+<body>
+  @include('html/blocks/header.html', {})
+  <main class="main">
+    @include('html/hero.html', {})
+    @include('html/concerts.html', {})
+    @include('html/members.html', {})
+    @include('html/history.html', {})
+    @include('html/contacts.html', {})
+  </main>
+  @include('html/blocks/footer.html', {})
+  @include('html/blocks/popup.html', {})
+
+  <script src="./js/index.bundle.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1200,
+      once: false
+    });
+  </script>
+
+</body>
+
+</html>

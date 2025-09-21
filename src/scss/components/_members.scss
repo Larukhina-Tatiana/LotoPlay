@@ -1,0 +1,39 @@
+@use '../utils/vars' as *;
+@use '../utils/mixins' as *;
+
+.members {
+  padding-top: clamp(1.688rem, 0.518rem + 5.85vw, 4.813rem);
+  padding-bottom: clamp(1.563rem, 0.393rem + 5.85vw, 4.688rem);
+
+  &__title {
+    margin-bottom: 46px;
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 90px;
+  }
+
+  &__item {
+    // overflow: hidden;
+    border-radius: $border-radius;
+    border: 1px solid $table-border;
+    perspective: 25px;
+  }
+
+  &__descr {
+    padding: 14px;
+    background-color: $table-bg;
+  }
+}
+
+.tilt3d-inner {
+  border-radius: $border-radius;
+  border: 1px solid $table-border;
+  transition: transform 0.2s ease-out;
+  will-change: transform;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}

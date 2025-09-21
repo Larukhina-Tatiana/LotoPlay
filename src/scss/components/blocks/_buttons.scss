@@ -1,0 +1,56 @@
+@use '../../utils/vars' as *;
+@use '../../utils/mixins' as *;
+
+.button {
+  display: inline-block;
+  border: 1px solid transparent;
+  border-radius: $border-radius;
+  cursor: pointer;
+  font-weight: bold;
+  @include transition ($transition-property: all);
+
+  &--yellow {
+    background: radial-gradient(circle, rgba(251, 220, 63, 1) 100%, rgba(252, 70, 107, 1) 100%);
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 5px $color-accent , 0 0 10px $color-accent;
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        animation: shadow-yellow .6s infinite linear;
+      }
+    }
+  }
+
+  &--red {
+    background-color: $color-accent;
+
+    @media (hover: hover) {
+      &:hover {
+        animation: shadow .6s infinite linear;
+      }
+    }
+  }
+}
+
+@keyframes shadow-yellow {
+  0% {
+    box-shadow: 0 0 8px 0px $color-yellow, 0 0 8px 0px $color-yellow;
+  }
+
+  100% {
+    box-shadow: 0 0 14px 2px $color-yellow, 0 0 2px 2px $color-yellow;
+  }
+}
+
+@keyframes shadow {
+  0% {
+    box-shadow: 0 0 8px 0px $color-accent, 0 0 8px 0px $color-accent;
+  }
+
+  100% {
+    box-shadow: 0 0 14px 2px rgba(255, 48, 26, 0.2), 0 0 2px 2px rgba(255, 48, 26, 0);
+  }
+}

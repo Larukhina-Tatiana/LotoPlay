@@ -1,0 +1,138 @@
+@use '../../utils/vars' as *;
+@use '../../utils/mixins' as *;
+
+.footer {
+  background-color: $color-bg;
+  padding-block: 38px;
+  letter-spacing: .4px;
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    margin-bottom: 38px;
+  }
+
+  &__copy {
+    flex: 1 1 auto;
+  }
+
+  &__social {
+    &-list {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    &-link {
+      position: relative;
+      padding: 4px;
+
+      &::before {
+        content: "";
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: $color-accent;
+        @include transition ($transition-property: (background-color, width, left));
+      }
+
+
+      @media (any-hover: hover) {
+        &:hover {
+          &::before {
+            width: 100%;
+          }
+        }
+      }
+
+
+      &:focus {
+        border-radius: $border-radius;
+        outline: none;
+        box-shadow: 0 0 5px $color-accent, 0 0 10px $color-accent;
+        @include transition ($transition-property: (box-shadow));
+      }
+    }
+  }
+
+
+  &__contacts {
+    &-list {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      color: $white;
+    }
+
+    &-link {
+      position: relative;
+      display: inline-flex;
+      color: currentColor;
+      padding: 4px;
+
+      &::before {
+        content: "";
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: $color-accent;
+        @include transition ($transition-property: (background-color, width, left));
+      }
+
+      &:hover {
+        @media (any-hover: hover) {
+          &:hover {
+            &::before {
+              width: 100%;
+            }
+          }
+        }
+      }
+
+      &:focus {
+        border-radius: $border-radius;
+        outline: none;
+        box-shadow: 0 0 5px $color-accent, 0 0 10px $color-accent;
+        @include transition ($transition-property: (box-shadow))
+      }
+    }
+  }
+
+
+
+  @media (max-width: 768px) {
+
+    &__contacts-list {
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 768px) {
+    &__top {
+      flex-direction: column;
+    }
+  }
+}
+
+.decor {
+  display: inline-block;
+  position: relative;
+
+  &:not(:last-child)::after {
+    content: "•";
+    color: $color-text;
+
+    position: absolute;
+    right: -5px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none; // 🔒 защита от фокуса и ховера
+    user-select: none; // 🔒 защита от выделения
+  }
+}

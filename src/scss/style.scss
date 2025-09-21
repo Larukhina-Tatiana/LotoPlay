@@ -1,0 +1,24 @@
+@use"./utils/modern-normalize.min";
+@use"./utils/fonts";
+@use"./utils/vars";
+@use"./utils/global";
+@use"./utils/mixins";
+@use"./utils/container";
+
+@use"./components/blocks/titles";
+
+@use"./components/blocks/header.scss";
+// @use"./components/blocks/nav.scss";
+@use"./components/blocks/logo.scss";
+@use"./components/hero.scss";
+@use"./components/blocks/buttons";
+@use"./components/concerts";
+@use"./components/blocks/table";
+@use"./components/members";
+@use"./components/history";
+@use"./components/contacts";
+@use"./components/blocks/footer";
+@use"./components/blocks/popup";
+@use"./components/blocks/form";
+
+// @use"./components/**/*.scss";

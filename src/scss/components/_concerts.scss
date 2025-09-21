@@ -1,0 +1,20 @@
+@use '../utils/vars' as *;
+@use '../utils/mixins' as *;
+
+.concerts {
+  padding-top: clamp(1.5rem, 0.591rem + 4.55vw, 4rem);
+  padding-bottom: clamp(1.438rem, 0.528rem + 4.55vw, 3.938rem);
+
+  &__button {
+    border-radius: $border-radius;
+    padding: 7px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    color: $white;
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 5px $color-accent, 0 0 10px
+    }
+  }
+}

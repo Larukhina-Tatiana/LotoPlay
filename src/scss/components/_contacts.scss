@@ -1,0 +1,131 @@
+@use '../utils/vars' as *;
+@use '../utils/mixins' as *;
+
+.contacts {
+  padding: 70px 0;
+  background-image: linear-gradient(to bottom right, #1e1116, #121c22);
+
+
+  &__title {
+    margin-bottom: 15px;
+  }
+
+  &__subtitle {
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 36px;
+    line-height: 1.6;
+  }
+
+  &__wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+
+  &__form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  &__fields {
+    display: flex;
+    gap: 27px;
+  }
+
+  &__field {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+
+    &--full {
+      width: 100%;
+    }
+  }
+
+  &__label {
+    font-size: 14px;
+    letter-spacing: 0.6px;
+    margin-bottom: 8px;
+  }
+
+  &__input,
+  &__textarea {
+    padding: 12px 15px;
+    border: 1px solid $table-border;
+    border-radius: $border-radius;
+    background: $table-bg;
+    color: $white;
+
+    &:focus {
+      outline: none;
+      border-color: #f43659;
+      box-shadow: 0 0 0 2px rgba(244, 54, 89, 0.5);
+    }
+  }
+
+  input:-webkit-autofill {
+    box-shadow: 0 0 0 1000px $table-bg inset; // перекрывает autofill-фон
+    -webkit-text-fill-color: $white; // чёрный текст
+    transition: background-color 5000s ease-in-out 0s; // подавляет анимацию
+  }
+
+  &__textarea {
+    resize: vertical;
+    height: 82px;
+
+    &::placeholder {
+      font-family: 'Roboto Mono', monospace;
+    }
+  }
+
+  &__btn {
+    align-self: flex-start;
+    padding: 12px 35px;
+
+    &:hover,
+    &:focus {
+      box-shadow: 0 5px 15px rgba(244, 54, 89, 0.4);
+    }
+  }
+
+  &__map {
+    background: $color-bg;
+    border-radius: $border-radius;
+    padding: 20px;
+    border: 1px solid $table-border;
+
+    &-title {
+      color: $white;
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: 1.6px;
+      margin-bottom: 20px;
+    }
+
+    iframe {
+      border-radius: $border-radius;
+      width: 100%;
+    }
+  }
+
+
+  @media (max-width: 768px) {
+    &__wrapper {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 576px) {
+    &__fields {
+      flex-direction: column;
+    }
+
+    &__field {
+      width: 100%;
+    }
+  }
+}

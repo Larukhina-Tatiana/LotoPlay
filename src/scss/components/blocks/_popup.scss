@@ -1,0 +1,59 @@
+@use '../../utils/vars' as *;
+@use '../../utils/mixins' as *;
+
+body.popup-open {
+  overflow: hidden;
+  touch-action: none; // для мобильных
+}
+
+.popup {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+
+  &.is-visible {
+    display: flex;
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4); // затемнение
+    backdrop-filter: blur(2px); // размытие фона
+    -webkit-backdrop-filter: blur(2px); // для Safari
+  }
+
+  &__title {
+    margin-bottom: 30px;
+  }
+
+  &__content {
+    position: relative;
+
+    max-width: clamp(18.125rem, 11.08rem + 35.23vw, 37.5rem);
+    width: 100%;
+    z-index: 1;
+    color: $color-text;
+    padding: clamp(1rem, 0.273rem + 3.64vw, 3rem);
+    border: 1px solid $table-border;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+    background: $table-head;
+    transition-duration: 350ms;
+    transition-timing-function:
+      cubic-bezier(.4, 0, .2, 1);
+  }
+
+  &__close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,42 @@
+<div class="popup" id="popup-buy" role="dialog" aria-modal="true" aria-labelledby="popup-title">
+  <div class="popup__overlay"></div>
+  <div class="popup__content">
+    <button class="popup__close" aria-label="Закрити попап">&times;</button>
+    <h2 class="popup__title title-h2" id="popup-title">Замовлення квитка</h2>
+    <form class="popup__form form" action="/concerts" id="order__form" name="orderForm" data-type="concert" data-js-form
+      novalidate>
+      <!-- Динамически заполняемые скрытые поля -->
+      <input type="hidden" name="concert-city" id="concert-city">
+      <input type="hidden" name="concert-venue" id="concert-venue">
+      <input type="hidden" name="concert-datetime" id="concert-datetime">
+      <label class="form__label" for="ticket-count">
+        <span class="form__label-legend">Кількість квитків</span>
+        <input class="form__input" type="number" name="ticket-count" id="ticket-count" min="1" max="10" step="1"
+          required title="Оберіть кількість квитків (від 1 до 10)" autocomplete="off" inputmode="numeric">
+        <span class="form-errors" data-js-form-field-errors role="alert"></span>
+      </label>
+
+      <label class="form__label" for="first-name">
+        <span class="form__label-legend">Ім’я:</span>
+        <input class="form__input" type="text" name="first-name" id="first-name" title="Введіть ім'я"
+          placeholder="Введіть ім'я" autocomplete="on">
+      </label>
+      <label class="form__label">
+        <span class="form__label-legend">Номер телефону</span>
+        <input class="form__input" type="tel" name="tel" data-js-phone placeholder="0501234567" required
+          pattern="^.{19}$" autocomplete="on">
+        <span class="progress-line"></span>
+        <span class="form-errors" data-js-form-field-errors role="alert"></span>
+      </label>
+      <label class="form__label" for="email">
+        <span class="form__label-legend">Email</span>
+        <input class="form__input" type="email" name="email" id="email" placeholder="user@example.com" required
+          pattern="^\S+@\S+\.\S+$" title="Будь ласка, укажіть у форматі: user@example.com" autocomplete="email">
+        <span class="form-errors" data-js-form-field-errors role="alert"></span>
+      </label>
+
+
+      <button type="submit" class="button button--red form__btm" data-js-submit>Підтвердити</button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,151 @@
+@use '../../utils/vars' as *;
+@use '../../utils/mixins' as *;
+
+.header {
+	// position: fixed;
+	// top: 0;
+	// left: 0;
+	// width: 100%;
+	// z-index: 1000;
+	position: relative;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 1000;
+	background-color: rgba($color-bg, 0.95);
+
+	&__container {
+		max-width: 1450px;
+		min-width: 320px;
+		margin-right: auto;
+		margin-left: auto;
+		padding-inline: $container-padding;
+	}
+
+	&__inner {
+		padding-block: 13px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		font-weight: 500;
+	}
+
+	.nav {
+		margin-left: auto;
+
+		&__list {
+			display: flex;
+			gap: 26px;
+		}
+
+		&__link {
+			position: relative;
+			display: inline-flex;
+
+			&::before {
+				content: "";
+				position: absolute;
+				bottom: 13px;
+				left: 0;
+				width: 0;
+				height: 2px;
+				background-color: $color-accent;
+				@include transition($transition-property: (background-color, width, left));
+			}
+
+			&:focus {
+				border-radius: $border-radius;
+				outline: none;
+				box-shadow: 0 0 5px $color-accent, 0 0 10px $color-accent;
+				@include transition($transition-property: (box-shadow));
+			}
+
+			@media (any-hover: hover) {
+				&:hover {
+					&::before {
+						width: 100%;
+					}
+				}
+			}
+		}
+
+		&__link,
+		&__button {
+			padding-block: 16px;
+			padding-inline: 2px;
+		}
+	}
+
+	.burger {
+		display: none;
+		flex-direction: column;
+		justify-content: space-between;
+		width: 30px;
+		height: 21px;
+		background: none;
+		border: none;
+		padding: 0;
+		cursor: pointer;
+		z-index: 1001;
+
+		&__line {
+			display: block;
+			width: 100%;
+			height: 3px;
+			background-color: $color-accent;
+			@include transition($transition-property: (transform, opacity));
+		}
+
+		&[aria-expanded="true"] {
+			.burger__line {
+				&:nth-child(1) {
+					transform: translateY(9px) rotate(45deg);
+				}
+
+				&:nth-child(2) {
+					opacity: 0;
+				}
+
+				&:nth-child(3) {
+					transform: translateY(-9px) rotate(-45deg);
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 768px) {
+	.header {
+		&__inner {
+			padding-block: 10px;
+		}
+
+		.nav {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba($color-bg, 0.95);
+			transform: translateX(100%);
+			@include transition(transform 0.3s ease-in-out);
+			padding-top: 70px;
+
+			&[aria-expanded="true"] {
+				transform: translateX(0);
+			}
+
+			&__list {
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				height: 100%;
+				gap: 30px;
+			}
+		}
+
+		.burger {
+			display: flex;
+		}
+	}
+}

@@ -1,0 +1,23 @@
+@use '../../utils/vars' as *;
+@use '../../utils/mixins' as *;
+
+.logo {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -1.5px;
+
+  @include transition ($transition-property: color);
+
+  @media (any-hover: hover) {
+    &:hover {
+      color: $color-accent;
+    }
+  }
+
+  &:focus {
+    border-radius: $border-radius;
+    outline: none;
+    box-shadow: 0 0 5px $color-accent, 0 0 10px $color-accent;
+    @include transition ($transition-property: (box-shadow))
+  }
+}
