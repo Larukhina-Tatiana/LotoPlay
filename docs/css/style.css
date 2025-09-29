@@ -845,13 +845,21 @@ button {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 @media (max-width: 768px) {
+  .footer__copy {
+    text-wrap: balance;
+    text-align: center;
+  }
   .footer__contacts-list {
     justify-content: center;
+    flex-wrap: wrap;
   }
-}
-@media (max-width: 768px) {
   .footer__top {
     flex-direction: column;
+  }
+}
+@media (max-width: 336px) {
+  .footer__contacts-list .footer__social-item:not(:last-child)::after {
+    display: none;
   }
 }
 

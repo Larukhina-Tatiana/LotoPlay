@@ -16,6 +16,8 @@
 
   &__copy {
     flex: 1 1 auto;
+
+
   }
 
   &__social {
@@ -105,20 +107,36 @@
   }
 
 
-
   @media (max-width: 768px) {
+    &__copy {
+      text-wrap: balance;
+      text-align: center;
+    }
 
     &__contacts-list {
       justify-content: center;
+      flex-wrap: wrap;
     }
-  }
 
-  @media (max-width: 768px) {
     &__top {
       flex-direction: column;
     }
   }
+
+  @media (max-width: 336px) {
+
+    &__contacts-list {
+
+      .footer__social-item {
+        &:not(:last-child)::after {
+          display: none;
+        }
+      }
+    }
+  }
 }
+
+
 
 .decor {
   display: inline-block;
